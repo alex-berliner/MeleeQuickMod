@@ -36,29 +36,37 @@ def get_name_and_ext(path):
     return name.split(".")[0], name.split(".")[-1]
 
 def import_mods(disc_handle, mypath):
+    fails = []
     for root, dirs, files in os.walk(mypath):
         for f in files:
+            applied = False
             mod_name, mod_ext = get_name_and_ext(f)
             for k in disc_handle.files_by_path:
                 disc_file_name, disc_file_ext = get_name_and_ext(disc_handle.files_by_path[k].file_path)
-                if disc_file_name == mod_name.split(" ")[0] and mod_ext == disc_file_ext:
+                if disc_file_name in mod_name.split(" ") and mod_ext == disc_file_ext:
                     replace_file(disc_handle, disc_handle.files_by_path[k], os.path.join(root, f))
-                    print(f"Adding {os.path.join(root, f)}")
+                    print(f"Writing {os.path.join(root, f)} over {disc_handle.files_by_path[k].file_path}")
+                    applied = True
                     break
+            if not applied:
+                fails += [os.path.join(root, f)]
+    if len(fails) > 0:
+        for e in fails:
+            print(f"Could not apply {e}")
+
 
 def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("-i", "--input", help="input iso")
     parser.add_argument("-o", "--output", default="moddedmelee.iso", help="output iso name")
     parser.add_argument("-m", "--mods", default="mods", help="mods storage folder, default is \"mods\"")
-    parser.add_argument("-t", "--time", action="store_true", help="append time string to output iso name")
+    parser.add_argument("-t", "--time", default=False, help="append time string to output iso name")
     args = vars(parser.parse_args())
     if "input" not in args:
         print("-i must be used. Run with -h for help.")
-    if "time" in args:
+    if args["time"]:
         oname, oext = get_name_and_ext(args["output"])
         args["output"] = f"{oname}{int(time.time())}.{oext}"
-    print(args)
     return args
 
 def main():
