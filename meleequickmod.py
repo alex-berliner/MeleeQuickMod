@@ -7,6 +7,14 @@ import time
 from os import walk
 import argparse
 
+def splash():
+    print("    __  ___   ____     __  ___")
+    print("   /  |/  /  / __ \   /  |/  /")
+    print("  / /|_/ /  / / / /  / /|_/ / ")
+    print(" / /  / /  / /_/ /  / /  / /  ")
+    print("/_/  /_/   \___\_\ /_/  /_/   ")
+
+
 def process_generator(g):
     # ripped from GCFT\gcft_ui\gcft_common.py GCFTThread.run
     try:
@@ -72,6 +80,8 @@ def parse_args():
     return args
 
 def main():
+    splash()
+
     args = parse_args()
     disc_handle = GCM(args["input"])
     disc_handle.read_entire_disc()
