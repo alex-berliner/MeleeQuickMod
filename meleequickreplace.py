@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-# don't output new file if no changes were made
+import sys
+sys.path.append("wwrando")
+sys.path.append("wwrando/wwlib")
 from gcm import *
 import time
 from os import walk
