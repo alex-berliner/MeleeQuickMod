@@ -5,9 +5,6 @@ import time
 from os import walk
 import argparse
 
-GAMEPATH = r"C:\Users\alexb\Desktop\New folder\meleeitinthere\newmelee.iso"
-NEWGAMEPATH = r"C:\Users\alexb\Desktop\New folder\meleeitinthere\modifiedmelee.iso"
-
 def process_generator(g):
     # ripped from GCFT\gcft_ui\gcft_common.py GCFTThread.run
     try:
@@ -38,8 +35,7 @@ def get_name_and_ext(path):
     name = path.split("/")[-1]
     return name.split(".")[0], name.split(".")[-1]
 
-def import_mods(disc_handle):
-    mypath = "mods"
+def import_mods(disc_handle, mypath):
     for root, dirs, files in os.walk(mypath):
         for f in files:
             mod_name, mod_ext = get_name_and_ext(f)
@@ -58,17 +54,18 @@ def parse_args():
     parser.add_argument("-t", "--time", action="store_true", help="append time string to output iso name")
     args = vars(parser.parse_args())
     if "input" not in args:
-        print("-i must be used. Run with -h.")
+        print("-i must be used. Run with -h for help.")
     if "time" in args:
         oname, oext = get_name_and_ext(args["output"])
         args["output"] = f"{oname}{int(time.time())}.{oext}"
+    print(args)
     return args
 
 def main():
     args = parse_args()
     disc_handle = GCM(args["input"])
     disc_handle.read_entire_disc()
-    import_mods(disc_handle)
+    import_mods(disc_handle, args["mods"])
     g = disc_handle.export_disc_to_iso_with_changed_files(args["output"])
     process_generator(g)
 
