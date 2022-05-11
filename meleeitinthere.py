@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
+# don't output new file if no changes were made
 from gcm import *
 import time
 from os import walk
+import argparse
 
 GAMEPATH = r"C:\Users\alexb\Desktop\New folder\meleeitinthere\newmelee.iso"
 NEWGAMEPATH = r"C:\Users\alexb\Desktop\New folder\meleeitinthere\modifiedmelee.iso"
@@ -37,8 +38,8 @@ def get_name_and_ext(path):
     name = path.split("/")[-1]
     return name.split(".")[0], name.split(".")[-1]
 
-def make_modified_disc(disc_handle):
-    mypath = "replace"
+def import_mods(disc_handle):
+    mypath = "mods"
     for root, dirs, files in os.walk(mypath):
         for f in files:
             mod_name, mod_ext = get_name_and_ext(f)
@@ -48,13 +49,28 @@ def make_modified_disc(disc_handle):
                     replace_file(disc_handle, disc_handle.files_by_path[k], os.path.join(root, f))
                     print(f"Adding {os.path.join(root, f)}")
                     break
-    g = disc_handle.export_disc_to_iso_with_changed_files(NEWGAMEPATH)
-    process_generator(g)
+
+def parse_args():
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("-i", "--input", help="input iso")
+    parser.add_argument("-o", "--output", default="moddedmelee.iso", help="output iso name")
+    parser.add_argument("-m", "--mods", default="mods", help="mods storage folder, default is \"mods\"")
+    parser.add_argument("-t", "--time", action="store_true", help="append time string to output iso name")
+    args = vars(parser.parse_args())
+    if "input" not in args:
+        print("-i must be used. Run with -h.")
+    if "time" in args:
+        oname, oext = get_name_and_ext(args["output"])
+        args["output"] = f"{oname}{int(time.time())}.{oext}"
+    return args
 
 def main():
-    disc_handle = GCM(GAMEPATH)
+    args = parse_args()
+    disc_handle = GCM(args["input"])
     disc_handle.read_entire_disc()
-    make_modified_disc(disc_handle)
+    import_mods(disc_handle)
+    g = disc_handle.export_disc_to_iso_with_changed_files(args["output"])
+    process_generator(g)
 
 if __name__ == "__main__":
     main()
