@@ -4,3 +4,6 @@ replace/*
 *.dat
 *.usd
 test.bat
+build/
+dist/
+*exe
