@@ -28,7 +28,7 @@ def build_datas_recursive(paths):
 
   return datas
 
-a = Analysis(['meleeitinthere.py'],
+a = Analysis(['meleequickreplace.py'],
              binaries=[],
              datas=build_datas_recursive([
                'assets/**/*.*',
