@@ -11,6 +11,7 @@ MQM uses the game's filename as the keyword (ie `PlFcBu`) to look for in the mod
 Mods can be organized in folders.
 
 Examples:
+
 | Mod Name  | Overwrites Game File | Note |
 | ------------- | ------------- | ------------- |
 | mods\PlFcBu.dat  | files/PlFcBu.dat  |  |
