@@ -13,6 +13,7 @@ def splash():
     print("  / /|_/ /  / / / /  / /|_/ / ")
     print(" / /  / /  / /_/ /  / /  / /  ")
     print("/_/  /_/   \___\_\ /_/  /_/   ")
+    print("https://github.com/alex-berliner/MeleeQuickMod")
 
 
 def process_generator(g):
