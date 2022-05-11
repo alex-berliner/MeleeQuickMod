@@ -4,6 +4,8 @@ Melee Quick Mod makes it easy to batch apply mods to a Super Smash Bros. Melee i
 
 ### Usage
 
+![MQM preview](assets/preview.png?raw=true "MQM preview")
+
 The easiest way to use Melee Quick Mod is to download some mods, place them in the `mods` folder, then drag your Melee iso onto `drag_iso_here.bat`. A file named `meleeout.iso` will be created that uses all your mods!
 
 MQM uses the game's filename as the keyword (ie `PlFcBu`) to look for in the mod's filename. The keyword doesn't have to be the only word in the mod's filename but it has to be spaced apart from any other words, and is case-sensitive.
