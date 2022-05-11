@@ -4,7 +4,7 @@ import os
 
 from version import VERSION
 
-base_name = "MeleeQuickReplace"
+base_name = "meleequickmod"
 base_name_with_version = base_name + "_" + VERSION
 
 import struct

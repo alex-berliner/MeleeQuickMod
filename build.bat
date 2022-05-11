@@ -1,4 +1,4 @@
 @echo off
-py -3.9-64 -m PyInstaller meleequickreplace.spec
-del meleequickreplace.exe
-copy dist\meleequickreplace0.5.0_64bit.exe meleequickreplace.exe
+py -3.9-64 -m PyInstaller meleequickmod.spec
+del meleequickmod.exe
+copy dist\meleequickmod0.5.0_64bit.exe meleequickmod.exe

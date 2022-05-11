@@ -28,7 +28,7 @@ def build_datas_recursive(paths):
 
   return datas
 
-a = Analysis(['meleequickreplace.py'],
+a = Analysis(['meleequickmod.py'],
              binaries=[],
              datas=build_datas_recursive([
                'assets/**/*.*',
@@ -47,7 +47,7 @@ exe = EXE(pyz,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='meleequickreplace' + build_version,
+          name='meleequickmod' + build_version,
           debug=False,
           strip=False,
           upx=True,
