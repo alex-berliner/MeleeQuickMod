@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 import sys
-sys.path.append("wwrando")
-sys.path.append("wwrando/wwlib")
 from gcm import *
 import time
 from os import walk
@@ -14,7 +12,6 @@ def splash():
     print(" / /  / /  / /_/ /  / /  / /  ")
     print("/_/  /_/   \___\_\ /_/  /_/   ")
     print("https://github.com/alex-berliner/MeleeQuickMod")
-
 
 def process_generator(g):
     # ripped from GCFT\gcft_ui\gcft_common.py GCFTThread.run
@@ -32,7 +29,6 @@ def process_generator(g):
                 # Extremely frequent updates (e.g. 1000 times per second) can cause
                 # the program to crash with no error message.
                 continue
-            # print(next_progress_text, progress_value)
             last_update_time = time.time()
     except Exception as e:
         print(e)
@@ -65,16 +61,16 @@ def import_mods(disc_handle, mypath):
         for e in fails:
             print(f"Could not apply {e}")
 
-
 def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("-i", "--input", help="input iso")
+    parser.add_argument("-i", "--input", default="", help="input iso")
     parser.add_argument("-o", "--output", default="moddedmelee.iso", help="output iso name")
     parser.add_argument("-m", "--mods", default="mods", help="mods storage folder, default is \"mods\"")
     parser.add_argument("-t", "--time", default=False, help="append time string to output iso name")
     args = vars(parser.parse_args())
-    if "input" not in args:
-        print("-i must be used. Run with -h for help.")
+    if args["input"] == "":
+        print("You must pass an input iso with -i. Run with -h for help.")
+        sys.exit()
     if args["time"]:
         oname, oext = get_name_and_ext(args["output"])
         args["output"] = f"{oname}{int(time.time())}.{oext}"
@@ -87,6 +83,9 @@ def main():
     disc_handle = GCM(args["input"])
     disc_handle.read_entire_disc()
     import_mods(disc_handle, args["mods"])
+    if len(disc_handle.changed_files) < 1:
+        print("No mods were added, aborting.")
+        sys.exit()
     g = disc_handle.export_disc_to_iso_with_changed_files(args["output"])
     process_generator(g)
 

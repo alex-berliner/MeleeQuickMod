@@ -6,4 +6,6 @@ replace/*
 test.bat
 build/
 dist/
-*exe
+*.exe
+*.zip
+*.7z
