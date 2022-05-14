@@ -26,7 +26,7 @@ Examples:
 | mods\PlFcBu  | invalid  | No file extension |
 | mods\PlFcOj.dat  | invalid  | Not a valid color |
 
-The command line arguments let you set the input (-i), output (-o), and mods path (-m), and passing the -t flag will append the time to the output iso's filename.
+The command line arguments let you set the input iso (-i), output iso name (-o), and mods path (-m), and passing the -t flag will append the time to the output iso's filename.
 
 ### Thanks
 
