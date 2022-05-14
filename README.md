@@ -1,6 +1,6 @@
 ## About
 
-Melee Quick Mod makes it easy to batch apply mods to a Super Smash Bros. Melee iso. It helps you organize your mods and makes it easier to apply them.
+Melee Quick Mod makes it easy to batch apply mods to a Super Smash Bros. Melee iso. It lets you organize your mods by folders and (semi)intelligently finds the correct files to replace.
 
 ### Usage
 
