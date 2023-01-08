@@ -33,6 +33,12 @@ Examples of what MQM will and won't replace:
 
 The command line arguments let you set the input iso (-i), output iso name (-o), and mods path (-m), and passing the -t flag will append the time to the output iso's filename. You can tweak these by editing `drag_iso_here.bat` or by running from command line.
 
+### Linux
+
+Linux users can run the python script directly:
+
+`./meleequickmod.py -i melee.iso`
+
 ### Thanks
 
 Thanks to LagoLunatic for the GCM parser from their wwrando repo and build structure from their GCFT repo.

@@ -9,3 +9,5 @@ dist/
 *.exe
 *.zip
 *.7z
+release/
+MeleeQuickMod/
