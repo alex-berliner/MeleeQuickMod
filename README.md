@@ -33,11 +33,11 @@ Examples of what MQM will and won't replace:
 
 The command line arguments let you set the input iso (-i), output iso name (-o), and mods path (-m), and passing the -t flag will append the time to the output iso's filename. You can tweak these by editing `drag_iso_here.bat` or by running from command line.
 
-### Linux
+### Linux / Mac
 
-Linux users can run the python script directly:
+Linux users (and probably Mac but untested) can run the python script directly:
 
-`./meleequickmod.py -i melee.iso`
+`./meleequickmod.py -i cleanmelee.iso`
 
 ### Thanks
 
