@@ -78,6 +78,14 @@ Inexact replacement also works:
 
 `mods\disc\files\audio\us\my_modded_1padv.ssm`
 
+### Contact
+
+Comments, questions, issues, found a dead bug in a box?
+
+Twitter https://twitter.com/allocsb
+
+Reddit https://reddit.com/u/LavaSalesman
+
 ### Thanks
 
 Thanks to LagoLunatic for the GCM parser from their wwrando repo and build structure from their GCFT repo.
