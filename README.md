@@ -22,7 +22,7 @@ Linux users (and probably Mac) can run the python script directly:
 
 ### Mod Naming Rules
 
-For MQM to recognize a mod file to replace a game file, the game filename must exist inside the mod filename. You may find this helpful for tagging, or just not having to mass rename things when downloading mods.
+Mod files must contain the entire text of the game file they are meant to replace, and have the same extension. Aside from that, the mod can be named whatever you wish and MQM will find it. You may find this helpful for tagging, or just not having to mass rename things when downloading mods.
 
 Examples of what MQM will and won't replace:
 | Mod Name  | Overwrites Game File | Note |
