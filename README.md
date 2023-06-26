@@ -22,12 +22,12 @@ Linux users (and probably Mac) can run the python script directly:
 
 ### Mod Naming Rules
 
-For MQM to recognize a mod file to replace a game file, the game filename must exist inside mod filename. You may find this helpful for tagging, or just not having to mass rename things when downloading mods.
+For MQM to recognize a mod file to replace a game file, the game filename must exist inside the mod filename. You may find this helpful for tagging, or just not having to mass rename things when downloading mods.
 
 Examples of what MQM will and won't replace:
 | Mod Name  | Overwrites Game File | Note |
 | ------------- | ------------- | ------------- |
-| mods\PlFcBu.dat  | files/PlFcBu.dat  | Game file and mod file are the same |
+| mods\PlFcBu.dat  | files/PlFcBu.dat  |  |
 | mods\PlFcBu Blue Falco.dat  | files/PlFcBu.dat  | Filename can have extra contents |
 | mods\BluePlFcBuFalco.dat  | files/PlFcBu.dat  | Game filename can be anywhere without delimiter|
 | mods\falco\PlFcBu.dat  | files/PlFcBu.dat  | Subfolders can be used |
@@ -52,21 +52,25 @@ You can use these by editing `drag_iso_here.bat` or by running from command line
 
 ### Avoiding Incorrect File Replacement
 
-TL;DR: `PlFcOj.dat` incorrectly replaces `PlFc.dat` instead of not replacing any file. This is intended.
+TL;DR: `PlFcOj.dat` incorrectly replaces `PlFc.dat` instead of not replacing any file. This is intended behavior, so make sure your mod filenames contain the full name of the file it should replace.
 
-MQM looks to see if the name of any file on the disc exists **inside** of your mod's name. This may lead to incorrect file replacements if, by way of your mod being named incorrectly, it doesn't match to the intended game file, and then does match to a different, unintended game file.
+MQM finds files to replace by looking for the full disc filename **inside** the mod filename. If your mod files don't contain the full disc filename, MQM may erroneously target similar looking files to replace on the disc instead, resulting in a broken iso.
 
-Example: You include a mislabeled mod named `PlFcOj.dat`. Since `Oj` isn't one of Falco's skin colors, MQM performs no file replacement.
+Example:
 
-Afterwards, MQM looks for a mod file to replace the disc file `PlFc.dat`, Falco's common texture data. Since `PlFc` exists inside `PlFcOj`, MQM incorrectly replaces `PlFcOj.dat` with `PlFc.dat`. Falco's common textures file has been incorrectly been replaced with a skin file and so the game will crash when loading him.
+You include a mod named `PlFcOj.dat`, expecting it to add an orange skin for Falco. However the stock Melee iso contains no such file since Falco has no orange skin by default so MQM does not perform the intended file replacement.
+
+Afterwards, MQM looks for a mod file to replace the disc file `PlFc.dat`, Falco's common texture data. Since the text `PlFc` appears inside `PlFcOj`, MQM incorrectly targets `PlFcOj.dat` to replace `PlFc.dat`. Now Falco's common textures file has been incorrectly been replaced with a skin file and so the game will crash when loading him.
 
 The way to avoid this is to ensure that the **entire text** of the file you wish to replace exists inside the mod filename.
 
 ### Structured Disc Replacement
 
-A caveat throwing all your mods in a single folder is that if two files with the same name exist on the disc in different folders MQM won't know which file to replace.
+A caveat surrounding throwing all your mods in a single folder is that if two files with the same name exist on the disc in different folders MQM won't know which file to replace.
 
-If this happens and you need to target a particular file on the disc, get the exact location of the file on the disc with `.\meleequickmod.exe -i cleanmelee.iso -c`. Then place your file in `mods\disc\my\exact\location\file.dat`. Everything goes in the subfolder `disc\`.
+If this happens you can target the file you wish to replace directly by storing it using the disc file's entire folder structure.
+
+Get the exact location of the file on the disc with `.\meleequickmod.exe -i cleanmelee.iso -c`. Then place your file in `mods\disc\my\exact\location\file.dat`. Note that everything goes in the subfolder `disc\` in the `mods` folder.
 
 Example: Melee has both `files/audio/1padv.ssm` and `files/audio/us/1padv.ssm`.
 
