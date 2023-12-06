@@ -52,7 +52,7 @@ You can use these by editing `drag_iso_here.bat` or by running from command line
 
 ### Avoiding Incorrect File Replacement
 
-TL;DR: `PlFcOj.dat` incorrectly replaces `PlFc.dat` instead of not replacing any file. This is intended behavior since `PlFcOj.dat` does not exist in the Melee disc, so make sure your mod filenames contain the full name of the file it should replace.
+TL;DR: `PlFcOj.dat` incorrectly replaces `PlFc.dat` instead of not replacing any file. This is intended behavior since `PlFcOj.dat` is not an actual file on a copy of Melee, so make sure your mod filenames contain the full name of the file it should replace.
 
 MQM finds files to replace by looking for the full disc filename **inside** the mod filename. If your mod files don't contain the full disc filename, MQM may erroneously target similar looking files to replace on the disc instead, resulting in a broken iso.
 
