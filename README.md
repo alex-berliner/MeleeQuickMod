@@ -28,12 +28,12 @@ Examples of what MQM will and won't replace:
 | Mod Name  | Overwrites Game File | Note |
 | ------------- | ------------- | ------------- |
 | mods\PlFcBu.dat  | files/PlFcBu.dat  |  |
-| mods\PlFcBu Blue Falco.dat  | files/PlFcBu.dat  | Filename can have extra contents |
-| mods\BluePlFcBuFalco.dat  | files/PlFcBu.dat  | Game filename can be anywhere without delimiter|
-| mods\falco\PlFcBu.dat  | files/PlFcBu.dat  | Subfolders can be used |
+| mods\PlFcBu Blue Falco.dat  | files/PlFcBu.dat  | Mod name can have extra contents |
+| mods\BluePlFcBuFalco.dat  | files/PlFcBu.dat  | Game file name can be placed anywhere in mod file name |
+| mods\falco\PlFcBu.dat  | files/PlFcBu.dat  | Folders can be used |
 | mods\disc\files\audio\us\1padv.ssm  | files/audio/us/1padv.ssm  | [Target specific files](#avoiding-incorrect-file-replacement) |
-| mods\Blue Falco.dat   | invalid  | Original filename missing |
-| mods\plfcbu.dat  | invalid  | Original filename case mismatch |
+| mods\Blue Falco.dat   | invalid  | Mod name does not contain any game file name |
+| mods\plfcbu.dat  | invalid  | Case mismatch between game file and mod file name |
 | mods\PlFcBu  | invalid  | No file extension |
 | mods\PlFcOj.dat  | invalid  | Not a valid color (See [Avoiding File Misplacement](#avoiding-incorrect-file-replacement)) |
 
