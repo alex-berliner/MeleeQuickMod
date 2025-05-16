@@ -86,7 +86,7 @@ Inexact replacement also works:
 
 Comments, questions, issues, found a dead bug in a box?
 
-Twitter https://twitter.com/allocsb
+Bluesky https://bsky.app/profile/alexberliner.bsky.social
 
 Reddit https://reddit.com/u/LavaSalesman
 
